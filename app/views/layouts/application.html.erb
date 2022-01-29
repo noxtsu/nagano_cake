@@ -4,12 +4,44 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand p-3" href="/"> LOGO </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+
+ 
+        <li class="nav-item">
+          <a>About</a>
+        </li>
+        <li class="nav-item">
+          <a>About</a>
+        </li>
+        <li class="nav-item">
+          <a>About</a>
+        </li>
+
+        <li class="nav-item">
+          <a>About</a>
+        </li>
+        <li class="nav-item">
+          <a>About</a>
+        </li>
+
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
