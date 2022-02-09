@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
+class AddDeviseToCustomers < ActiveRecord::Migration[5.2]
   def change
     create_table :customers do |t|
       ## Database authenticatable
@@ -33,7 +33,17 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
 
-      t.timestamps null: false
+      # Uncomment below if timestamps were not included in your original model.
+      # t.timestamps null: false
+
+      t.string :last_name,              null: false
+      t.string :first_name,             null: false
+      t.string :last_name_kana,         null: false
+      t.string :first_name_kana,        null: false
+      t.string :postal_code,            null: false
+      t.string :address,                null: false
+      t.string :telephone_number,       null: false
+      t.boolean :is_active,             null: false, default: false
     end
 
     add_index :customers, :email,                unique: true
@@ -41,4 +51,5 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
     # add_index :customers, :confirmation_token,   unique: true
     # add_index :customers, :unlock_token,         unique: true
   end
+
 end

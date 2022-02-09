@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <header>
+    <header class="border-bottom">
       <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand p-3" href="/"> LOGO </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,24 +20,90 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
 
- 
-        <li class="nav-item">
-          <a>About</a>
-        </li>
-        <li class="nav-item">
-          <a>About</a>
-        </li>
-        <li class="nav-item">
-          <a>About</a>
-        </li>
+          <% if admin_signed_in? %>
+          <li>
+            <%= link_to about_path, class:"nav-link btn btn-outline-secondary" do %>
+              商品一覧
+            <% end %>
+          </li>
 
-        <li class="nav-item">
-          <a>About</a>
-        </li>
-        <li class="nav-item">
-          <a>About</a>
-        </li>
+           <li>
+            <%= link_to about_path, class:"nav-link btn btn-outline-secondary" do %>
+              会員一覧
+            <% end %>
+          </li>
 
+          <li>
+            <%= link_to admin_path, class:"nav-link btn btn-outline-secondary" do %>
+              注文履歴一覧
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to about_path, class:"nav-link btn btn-outline-secondary" do %>
+              ジャンル一覧
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link btn btn-outline-secondary" do %>
+              ログアウト
+            <% end %>
+          </li>
+
+
+          <% elsif customer_signed_in? %>
+          <li>
+            <%= link_to mypage_path, class:"nav-link btn btn-outline-secondary" do %>
+              マイページ
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to about_path, class:"nav-link btn btn-outline-secondary" do %>
+              商品一覧
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to about_path, class:"nav-link btn btn-outline-secondary" do %>
+              カート
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to destroy_customer_session_path, method: :delete, class:"nav-link btn btn-outline-secondary" do %>
+              ログアウト
+            <% end %>
+          </li>
+
+　        <% else %>
+
+          <li>
+            <%= link_to about_path, class:"nav-link btn btn-outline-secondary" do %>
+              About
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to about_path, class:"nav-link btn btn-outline-secondary" do %>
+              商品一覧
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_customer_registration_path, class:"nav-link btn btn-outline-secondary" do %>
+              新規登録
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to new_customer_session_path, class:"nav-link btn btn-outline-secondary" do %>
+              ログイン
+            <% end %>
+          </li>
+
+          <% end %>
           </ul>
         </div>
       </nav>
