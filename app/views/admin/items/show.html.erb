@@ -1,2 +1,4 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h3 class="text-black-50">商品詳細</h3>
+
+<% @item.each do |item| %>
+<p><%= attachment_image_tag item, :image_id></p>

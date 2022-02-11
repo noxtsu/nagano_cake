@@ -10,15 +10,19 @@
       <% end %>
     </div>
   </div>
-  
+
   <div class="row">
-    <div class="col-sm-auto">
+    <div class="col-sm-5">
       <table class="table">
 
         <th>ジャンル</th>
-        <%= @genres.each do |genre| %>
+        <% @genres.each do |genre| %>
         <tr>
           <td><%= genre.name %></td>
+          <td><%= link_to edit_admin_genre_path(genre.id), class:"nav-link btn btn-outline-secondary" do %>
+          　　編集する
+          　　<% end %>
+          </td>
           </tr>
           <% end %>
       </table>
