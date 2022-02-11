@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw' => 'customers#withdraw'
 
     get 'items' => 'items#index'
-    get 'items/:id' => 'items#show'
+    get 'items/:id' => 'items#show', as: 'item'
   end
 
   devise_for :customers, skip: [:passwords],
