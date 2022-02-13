@@ -4,6 +4,8 @@ class CreateCartItems < ActiveRecord::Migration[5.2]
       t.integer :amount
 
       t.timestamps
+      
+      
     end
   end
 end

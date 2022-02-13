@@ -1,0 +1,27 @@
+
+<div slass="container">
+  <div class="row">
+
+    <div class="col-sm-7">
+      <table class="table">
+
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込み）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+        <% @cart_items.each do |cart_items| %>
+        <tr>
+          <td><%= cart_items.item.name %></td>
+          <td><%= cart_items.item.with_tax_price %></td>
+          <td><%= cart_items.amount %></td>
+          <td><%= cart_items.subtotal %></td>
+        </tr>
+
+          <% end %>
+      </table>
+
+    </div>
+  </div>

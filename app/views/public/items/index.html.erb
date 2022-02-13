@@ -2,15 +2,24 @@
 
 <div slass="container">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-3">
+      ジャンル検索
+
+
+    </div>
+
+    <div class="col-sm-7">
       <table class="table">
         <% @items.each do |items| %>
-        <tr>
-          <td><%= items.name %></td>
-          <td><%= items.price %></td>
-          <td></td>
-          </tr>
+        <tr><td><%= link_to item_path(items.id) do %>
+          <%= attachment_image_tag items, :image, format: 'jpeg', size: "100x100" %>
+          <% end %></td></tr>
+        <tr><td><%= items.name %></td></tr>
+        <tr><td><%= (items.price * 1.1).floor %></td></tr>
+        <td></td>
+
           <% end %>
       </table>
+
     </div>
   </div>
