@@ -2,32 +2,26 @@
 
 <div class="container">
   <div class="row sm-auto">
-    <div class="col-sm-8">
-      <h5>注文情報</h5>
-      <table class="table-bordered">
-        <tr><td>注文日</td><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
-        <tr>
-          <td>配送先</td><td><%= @order.postal_code %><br>
-          <%= @order.address %><br>
-          <% @order.name %></td>
-        </tr>
-        <tr><td>支払方法</td><td><%= @order.payment_method_i18n %></td></tr>
-        <tr><td>ステータス</td></tr>
-      </table>
-    </div>
 
 
-    <div class="col-sm-3">
-      <table class="table-bordered">
-        <tr><td>商品合計</td><td><%= @order.total_payment - @order.shipping_cost %></td></tr>
-        <tr> <td>配送料</td><td><%= @order.shipping_cost %></td></tr>
-        <tr><td><strong>ご請求額</strong></td><td><%= @order.total_payment %></td></tr>
-      </table>
+   <div class="col-sm-2">
+      <p>購入者</p>
+      <p>注文日</p>
+      <p>配送先</p><br>
+      <p>支払方法</p>
     </div>
-　</div>
+      <div class="col-sm-10">
+        <p><%= @customer.last_name %><%= @customer.first_name %></p>
+        <p><%= @order.created_at.strftime('%Y/%m/%d') %></p>
+        <p>〒<%= @order.postal_code %><br>
+           <%= @order.address %><br>
+           <% @order.name %></p>
+        <p><%= @order.payment_method_i18n %></p>
+      </div>
+  　</div>
 
   <div class="row">
-    <div class="col-sm-auto">
+    <div class="col-sm-6">
       <h5>注文内容</h5>
       <table class="table-bordered">
         <tr>
@@ -52,9 +46,16 @@
             <%= (order_detail.item.price * 1.1).floor * order_detail.amount %><br>
             <% end %></td>
         </tr>
-
+        <% end %>
       </table>
     </div>
-     <% end %>
+
+    <div class="col-sm-3">
+      <table class="table-bordered">
+        <tr><td>商品合計</td><td><%= @order.total_payment - @order.shipping_cost %></td></tr>
+        <tr> <td>配送料</td><td><%= @order.shipping_cost %></td></tr>
+        <tr><td><strong>ご請求額</strong></td><td><%= @order.total_payment %></td></tr>
+      </table>
+    </div>
 　</div>
 </div>

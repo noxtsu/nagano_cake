@@ -1,2 +1,69 @@
-<h1>Public::Orders#comfirm</h1>
-<p>Find me in app/views/public/orders/comfirm.html.erb</p>
+<%= form_with model: @order, url: orders_path, local: true do |f| %>
+<%= f.hidden_field :payment_method %>
+<%= f.hidden_field :postal_code %>
+<%= f.hidden_field :address %>
+<%= f.hidden_field :name %>
+<%= f.hidden_field :shipping_cost %>
+<%= f.hidden_field :total_payment %>
+
+<div slass="container">
+  <div class="row">
+
+    <div class="col-sm-7">
+      <table class="table">
+      <h3 class="text-black-50">注文情報確認</h3>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+        <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= cart_item.item.name %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
+          <td><%= cart_item.amount %></td>
+          <td><%= cart_item.subtotal %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+        <div class="col-sm-3">
+      <table class="table">
+        <tr>
+          <th>送料</th>
+          <th>商品合計</th>
+          <th>請求額</th>
+        </tr>
+        <tr>
+          <td><%= @order.shipping_cost %></td>
+          <td><%= @total_product_price %></td>
+          <td>
+            <h3><%= @order.total_payment %>円</h3>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <p>支払方法</p>
+      <p>お届け先</p>
+    </div>
+    <div class="col-sm-6">
+      <p><%= @order.payment_method_i18n %></p>
+      <p>〒<%= @order.postal_code %><%= @order.address %></p>
+      <p><%= @order.name %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+   <%= f.submit '注文を確定する' %>
+    </div>
+  </div>
+<% end %>
+
+</div>

@@ -19,7 +19,7 @@
       <tr>
         <td><%= items.id %></td>
         <td>
-          <%= link_to admin_item_path(@items) do %>
+          <%= link_to admin_item_path(items.id) do %>
           <%= items.name %>
           <% end %></td>
         <td><%= items.price %></td>

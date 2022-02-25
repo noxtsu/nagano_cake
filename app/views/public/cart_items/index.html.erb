@@ -1,12 +1,20 @@
 
-<div slass="container">
+<div class="container">
   <div class="row">
+    <div class="col-sm-5">
+      <h3 class="text-black-50">ショッピングカート</h3>
+    </div>
+    <div class="col-sm-4">
+      <%= link_to cart_items_destroy_all_path(current_customer.id), method: :delete, class:"nav-link btn btn-outline-danger" do %>
+      カートを空にする
+      <% end %>
+    </div>
     <div class="col-sm-7">
       <table class="table">
 
         <tr>
           <th>商品名</th>
-          <th>単価（税込み）</th>
+          <th>単価（税込）</th>
           <th>数量</th>
           <th>小計</th>
           <th></th>
@@ -15,9 +23,14 @@
         <tr>
           <td><%= cart_items.item.name %></td>
           <td><%= cart_items.item.with_tax_price %></td>
-          <td><%= cart_items.amount %></td>
+          <td>
+            <%= form_with model: cart_items, local: true do |f| %>
+            <%= f.select :amount, *[1..10] %>
+            <%= f.submit "変更" %>
+            <% end %>
+          </td>
           <td><%= cart_items.subtotal %></td>
-          <% @total_price +=  cart_items.subtotal %>
+          <% @total_price += cart_items.subtotal %>
           <td>
             <%= link_to cart_item_path(cart_items.id), method: :delete, class:"nav-link btn btn-outline-danger" do %>
             削除する
@@ -25,17 +38,37 @@
           </td>
         </tr>
         <% end %>
-
+      </table>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-sm-7">
+
+    <div class="col-sm-3 offset-sm-3">
         <h4>合計金額<%= @total_price %></h4>
-        <%= link_to cart_items_destroy_all_path(current_customer.id), method: :delete, class:"nav-link btn btn-outline-danger" do %>
-          カートを空にする
-        <% end %>
+
     </div>
   </div>
+
+    <div class="row justify-content-center">
+    <div class="col-sm-3">
+       <%= link_to root_path, class:"nav-link btn btn-outline-secondary" do %>
+      買い物を続ける
+      <% end %>
+    </div>
+
+    <div class="col-sm-4">
+
+      <% if current_customer.cart_items.present? %>
+        <%= link_to orders_new_path, class:"nav-link btn btn-outline-secondary" do %>
+        情報入力に進む
+        <% end %>
+
+      <% else %>
+        <div></div>
+      <% end %>
+
+    </div>
+    </div>
 </div>
 

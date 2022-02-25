@@ -2,7 +2,7 @@
 
 <div slass="container">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-auto">
       <table class="table">
         <tr>
           <th>会員id</th>
@@ -14,12 +14,12 @@
         <tr>
           <td><%= customers.id %></td>
           <td>
-            <%= link_to admin_customer_path(@customers) do %>
+            <%= link_to admin_customer_path(customers.id) do %>
             <%= customers.last_name %> <%= customers.first_name %>
             <% end %></td>
           <td><%= customers.email %></td>
-          <td> </td>
-          </tr>
+          <td><%= customers.is_deleted ? '退会' : '有効' %></td>
+        </tr>
           <% end %>
       </table>
     </div>

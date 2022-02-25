@@ -1,2 +1,26 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<h3 class="text-black-50">商品編集</h3>
+
+<%= form_with model: @item, url: admin_item_path, local: true do |f| %>
+
+<div slass="container">
+  <div class="row">
+    <div class="col-sm-2 offset-sm-1">
+      <p>商品画像</p>
+      <p>商品名</p><br>
+      <p>商品説明</p><br>
+      <p>ジャンル</p><br>
+      <p>税抜価格</p><br>
+      <p>販売ステータス</p>
+      <p><%= f.submit '変更を保存' %></p>
+    </div>
+      <div class="col-sm-6">
+        <p><%= f.attachment_field :image %></p>
+        <p><%= f.text_field :name %></p>
+        <p><%= f.text_area :introduction %></p>
+        <p><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %></p>
+　　　　<p><%= f.text_field :price %>円</p>
+
+     </div>
+　　　　<% end %>
+    </div>
+  </div>

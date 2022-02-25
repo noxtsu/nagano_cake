@@ -1,15 +1,13 @@
+
+
+
 <div class="container">
+   <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
   <div class="row">
 
-    <h3>マイページ</h3><br>
 
-   <h3>登録情報</h3>
-   <%= link_to admincustomers_edit_path, class:"nav-link btn btn-outline-secondary" do %>
-     編集する
-   <% end %>
-
-
-<table class="table-bordered">
+　　　<div class="col-sm-5">
+　　　<table class="table-bordered">
 
 
   <tr><td>名前</td><td><%= @customer.last_name %>  <%= @customer.first_name %></td></tr>
@@ -20,5 +18,11 @@
   <tr><td>メールアドレス</td><td><%= @customer.email %></td></tr>
 
 </table>
+  </div>
+　　　<div class="col-sm-5">
+      <%= link_to edit_admin_customer_path, class:"nav-link btn btn-outline-secondary" do %>
+      編集する
+      <% end %>
+      </div>
   </div>
 </div>

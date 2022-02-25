@@ -8,14 +8,20 @@
           <th>注文個数</th>
           <th>注文ステータス</th>
         </tr>
-
+        <% @order_details.each do |order_detail| %>
         <tr>
           <td>
+            <%= order_detail.created_at.strftime('%Y/%m/%d %H:%M') %>
           </td>
           <td>
-          </td>
+            <%= link_to admin_order_path(order_detail.order.id) do %>
+            <%= order_detail.order.customer.last_name %><%= order_detail.order.customer.first_name %><br>
+            <% end %>
+          <br></td>
+          <td><%= order_detail.amount%></td>
           <td></td>
-        </tr> 
+        </tr>
+        <% end %>
 
       </table>
     </div>

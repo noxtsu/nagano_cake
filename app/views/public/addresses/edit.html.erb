@@ -1,2 +1,44 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+
+<h3 class="text-black-50">配送先編集</h3>
+
+<%= form_with model: @address, url: update_address_path, local: true do |f| %>
+
+
+<div class="container">
+
+  <div class="row form-group">
+    <div class="col-sm-2">郵便番号（ハイフンなし）</div>
+
+    <div class="col-sm-5">
+      <%= f.text_field :postal_code, autofocus: true %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-sm-2">住所</div>
+
+    <div class="col-sm-5">
+      <%= f.text_field :address, autofocus: true %>
+    </div>
+  </div>
+
+
+  <div class="row form-group">
+    <div class="col-sm-2">宛名</div>
+
+    <div class="col-sm-5">
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+  </div>
+
+  <div class="row form-group">
+    <div class="col-sm-5">
+    <%= f.submit "変更内容を保存" %>
+
+    </div>
+  </div>
+
+</div>
+
+<% end %>
+
