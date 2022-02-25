@@ -1,5 +1,9 @@
-<h2>商品新規登録</h2>
 
+
+<div class="container">
+
+<h3 class="text-black-50">商品新規登録</h3>
+  <div class="row sm-auto">
 <%= form_with model: @items, url: admin_items_path, local: true do |f| %>
 
 　<h4>商品画像</h4>
@@ -17,8 +21,9 @@
   <h4>販売価格</h4>
   <%= f.text_field :price %>円
 
-  <h4>販売ステータス</h4>
 
   <%= f.submit '新規登録' %>
-
+  </div>
 <% end %>
+
+</div>
